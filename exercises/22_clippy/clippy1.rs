@@ -6,6 +6,7 @@
 
 fn main() {
     // TODO: Fix the Clippy lint in this line.
+    #[deny(clippy::approx_constant)]
     let pi = 3.14;
     let radius: f32 = 5.0;
 
