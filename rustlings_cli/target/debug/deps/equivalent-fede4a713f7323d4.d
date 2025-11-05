@@ -1,0 +1,5 @@
+/home/aglushko2/rustlings_for_hse/rustlings_cli/target/debug/deps/equivalent-fede4a713f7323d4.d: /home/aglushko2/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/equivalent-1.0.2/src/lib.rs
+
+/home/aglushko2/rustlings_for_hse/rustlings_cli/target/debug/deps/libequivalent-fede4a713f7323d4.rmeta: /home/aglushko2/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/equivalent-1.0.2/src/lib.rs
+
+/home/aglushko2/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/equivalent-1.0.2/src/lib.rs:

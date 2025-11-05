@@ -572,10 +572,10 @@ impl AppState {
             match progres {
                 CheckProgress::Done => {
                     self.set_status(i, true)?;
-                    return Ok(false);
                 }
                 CheckProgress::Pending => {
                     self.set_status(i, false)?;
+                    return Ok(false);
                 }
                 CheckProgress::None | CheckProgress::Checking => {
                     // If we got an error while checking all exercises in parallel,
@@ -589,6 +589,7 @@ impl AppState {
                         *progres = CheckProgress::Done;
                     } else {
                         *progres = CheckProgress::Pending;
+                        return Ok(false);
                     }
                     self.set_status(i, success)?;
                 }
