@@ -1,4 +1,17 @@
+#[derive(Debug)]
+enum Message {
+    // TODO: Define a few types of messages as used below.
+    Quit,
+    Move,
+    Echo,
+    ChangeColor,
+    Resize,
+}
+
 fn main() {
-    // DON'T EDIT THIS SOLUTION FILE!
-    // It will be automatically filled after you finish the exercise.
+    println!("{:?}", Message::Resize);
+    println!("{:?}", Message::Move);
+    println!("{:?}", Message::Echo);
+    println!("{:?}", Message::ChangeColor);
+    println!("{:?}", Message::Quit);
 }

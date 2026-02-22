@@ -1,4 +1,6 @@
+// TODO: Change the line below to fix the compiler error.
+const NUMBER: i32 = 3;
+
 fn main() {
-    // DON'T EDIT THIS SOLUTION FILE!
-    // It will be automatically filled after you finish the exercise.
+    println!("Number: {NUMBER}");
 }

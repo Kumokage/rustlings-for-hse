@@ -1,4 +1,9 @@
+// TODO: Fix the compiler error without changing the function signature.
+fn current_favorite_color() -> String {
+    String::from("blue")
+}
+
 fn main() {
-    // DON'T EDIT THIS SOLUTION FILE!
-    // It will be automatically filled after you finish the exercise.
+    let answer = current_favorite_color();
+    println!("My current favorite color is {answer}");
 }

@@ -1,4 +1,6 @@
 fn main() {
-    // DON'T EDIT THIS SOLUTION FILE!
-    // It will be automatically filled after you finish the exercise.
+    // TODO: Change the line below to fix the compiler error.
+    let x: i32 = 0;
+
+    println!("Number {x}");
 }
