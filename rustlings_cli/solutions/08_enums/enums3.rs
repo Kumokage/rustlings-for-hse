@@ -16,6 +16,7 @@ struct State {
     height: u64,
     position: Point,
     message: String,
+    // RGB color composed of red, green and blue.
     color: (u8, u8, u8),
     quit: bool,
 }

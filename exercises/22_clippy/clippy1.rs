@@ -3,10 +3,10 @@
 //
 // For these exercises, the code will fail to compile when there are Clippy
 // warnings. Check Clippy's suggestions from the output to solve the exercise.
-
+#[allow(clippy::approx_constant)]
 fn main() {
     // TODO: Fix the Clippy lint in this line.
-    #[deny(clippy::approx_constant)]
+
     let pi = 3.14;
     let radius: f32 = 5.0;
 

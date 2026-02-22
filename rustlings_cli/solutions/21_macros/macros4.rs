@@ -1,4 +1,4 @@
-// Added semicolons to separate the macro arms.
+// TODO: Fix the compiler error by adding one or two characters.
 #[rustfmt::skip]
 macro_rules! my_macro {
     () => {
@@ -6,7 +6,7 @@ macro_rules! my_macro {
     };
     ($val:expr) => {
         println!("Look at this other macro: {}", $val);
-    };
+    }
 }
 
 fn main() {

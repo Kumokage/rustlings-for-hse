@@ -1,6 +1,5 @@
-// The type of function arguments must be annotated.
-// Added the type annotation `u64`.
-fn call_me(num: u64) {
+// TODO: Add the missing type of the argument `num` after the colon `:`.
+fn call_me(num:i32) {
     for i in 0..num {
         println!("Ring! Call number {}", i + 1);
     }

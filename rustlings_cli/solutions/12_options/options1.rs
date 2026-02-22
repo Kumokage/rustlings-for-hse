@@ -3,10 +3,12 @@
 // someone eats it all, so no icecream is left (value 0). Return `None` if
 // `hour_of_day` is higher than 23.
 fn maybe_icecream(hour_of_day: u16) -> Option<u16> {
-    match hour_of_day {
-        0..=21 => Some(5),
-        22..=23 => Some(0),
-        _ => None,
+    if hour_of_day < 22 {
+        Some(5)
+    } else if hour_of_day <= 23 {
+        Some(0)
+    } else {
+        None
     }
 }
 
@@ -20,10 +22,11 @@ mod tests {
 
     #[test]
     fn raw_value() {
-        // Using `unwrap` is fine in a test.
+        // TODO: Fix this test. How do you get the value contained in the
+        // Option?
         let icecreams = maybe_icecream(12).unwrap();
 
-        assert_eq!(icecreams, 5);
+        assert_eq!(icecreams, 5); // Don't change this line.
     }
 
     #[test]

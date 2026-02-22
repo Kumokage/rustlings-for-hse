@@ -1,5 +1,5 @@
-// The type of constants must always be annotated.
-const NUMBER: u64 = 3;
+// TODO: Change the line below to fix the compiler error.
+const NUMBER: i32 = 3;
 
 fn main() {
     println!("Number: {NUMBER}");

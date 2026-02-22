@@ -1,4 +1,3 @@
-// Moved the macro definition to be before its call.
 macro_rules! my_macro {
     () => {
         println!("Check out my macro!");
@@ -8,3 +7,6 @@ macro_rules! my_macro {
 fn main() {
     my_macro!();
 }
+
+// TODO: Fix the compiler error by moving the whole definition of this macro.
+
