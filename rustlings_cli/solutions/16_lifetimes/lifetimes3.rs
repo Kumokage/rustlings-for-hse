@@ -1,11 +1,9 @@
 // Lifetimes are also needed when structs hold references.
 
+// TODO: Fix the compiler errors about the struct.
 struct Book<'a> {
-    //     ^^^^ added a lifetime annotation
     author: &'a str,
-    //       ^^
     title: &'a str,
-    //      ^^
 }
 
 fn main() {

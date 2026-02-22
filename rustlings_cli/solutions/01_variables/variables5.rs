@@ -1,9 +1,8 @@
 fn main() {
-    let number = "T-H-R-E-E";
-    println!("Spell a number: {number}");
+    let number = "T-H-R-E-E"; // Don't change this line
+    println!("Spell a number: {}", number);
 
-    // Using variable shadowing
-    // https://doc.rust-lang.org/book/ch03-01-variables-and-mutability.html#shadowing
+    // TODO: Fix the compiler error by changing the line below without renaming the variable.
     let number = 3;
     println!("Number plus two is: {}", number + 2);
 }

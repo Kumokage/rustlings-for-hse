@@ -4,21 +4,23 @@
 
 // Obtain the number of bytes (not characters) in the given argument
 // (`.len()` returns the number of bytes in a string).
-fn byte_counter<T: AsRef<str>>(arg: T) -> usize {
+// TODO: Add the `AsRef` trait appropriately as a trait bound.
+fn byte_counter<T: AsRef<str>>(arg: T ) -> usize {
     arg.as_ref().len()
 }
 
 // Obtain the number of characters (not bytes) in the given argument.
+// TODO: Add the `AsRef` trait appropriately as a trait bound.
 fn char_counter<T: AsRef<str>>(arg: T) -> usize {
     arg.as_ref().chars().count()
 }
 
 // Squares a number using `as_mut()`.
+// TODO: Add the appropriate trait bound.
 fn num_sq<T: AsMut<u32>>(arg: &mut T) {
-    let arg = arg.as_mut();
-    *arg *= *arg;
+    let val = arg.as_mut();
+    *val = *val * *val;
 }
-
 fn main() {
     // You can optionally experiment here.
 }

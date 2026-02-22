@@ -7,6 +7,7 @@
 
 use std::num::ParseIntError;
 use std::str::FromStr;
+use crate::ParsePersonError::{BadLen, NoName};
 
 #[derive(Debug, PartialEq)]
 struct Person {
@@ -25,26 +26,46 @@ enum ParsePersonError {
     ParseInt(ParseIntError),
 }
 
+// TODO: Complete this `FromStr` implementation to be able to parse a `Person`
+// out of a string in the form of "Mark,20".
+// Note that you'll need to parse the age component into a `u8` with something
+// like `"4".parse::<u8>()`.
+//
+// Steps:
+// 1. Split the given string on the commas present in it.
+// 2. If the split operation returns less or more than 2 elements, return the
+//    error `ParsePersonError::BadLen`.
+// 3. Use the first element from the split operation as the name.
+// 4. If the name is empty, return the error `ParsePersonError::NoName`.
+// 5. Parse the second element from the split operation into a `u8` as the age.
+// 6. If parsing the age fails, return the error `ParsePersonError::ParseInt`.
 impl FromStr for Person {
     type Err = ParsePersonError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let mut split = s.split(',');
-        let (Some(name), Some(age), None) = (split.next(), split.next(), split.next()) else {
-            //                      ^^^^ there should be no third element
-            return Err(ParsePersonError::BadLen);
-        };
-
-        if name.is_empty() {
-            return Err(ParsePersonError::NoName);
+        if s.is_empty() {
+            return Err(BadLen);
         }
-
-        let age = age.parse().map_err(ParsePersonError::ParseInt)?;
-
-        Ok(Self {
-            name: name.into(),
-            age,
-        })
+        let mut split = s.split(',');
+        let name = split.next().unwrap();
+        if  let Some(age) = split.next() {
+            if split.next().is_some() {
+                return Err(BadLen);
+            }
+            if name.is_empty() {
+                return Err(NoName);
+            }
+            if let Ok(age) = age.parse::<u8>() {
+                Ok(Person {
+                    name: name.to_string(),
+                    age,
+                })
+            }  else {
+                Err(ParsePersonError::ParseInt(age.parse::<u8>().unwrap_err()))
+            }
+        } else {
+            Err(BadLen)
+        }
     }
 }
 

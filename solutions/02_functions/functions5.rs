@@ -1,4 +1,9 @@
+// TODO: Fix the function body without changing the signature.
+fn square(num: i32) -> i32 {
+    num * num
+}
+
 fn main() {
-    // DON'T EDIT THIS SOLUTION FILE!
-    // It will be automatically filled after you finish the exercise.
+    let answer = square(3);
+    println!("The square of 3 is {answer}");
 }

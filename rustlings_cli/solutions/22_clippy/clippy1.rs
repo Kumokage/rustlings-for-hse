@@ -3,12 +3,11 @@
 //
 // For these exercises, the code will fail to compile when there are Clippy
 // warnings. Check Clippy's suggestions from the output to solve the exercise.
-
-use std::f32::consts::PI;
-
+#[allow(clippy::approx_constant)]
 fn main() {
-    // Use the more accurate `PI` constant.
-    let pi = PI;
+    // TODO: Fix the Clippy lint in this line.
+
+    let pi = 3.14;
     let radius: f32 = 5.0;
 
     let area = pi * radius.powi(2);

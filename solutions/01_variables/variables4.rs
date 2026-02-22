@@ -1,4 +1,8 @@
+// TODO: Fix the compiler error.
 fn main() {
-    // DON'T EDIT THIS SOLUTION FILE!
-    // It will be automatically filled after you finish the exercise.
+    let x = 3;
+    println!("Number {x}");
+    let x;
+    x = 5; // Don't change this line
+    println!("Number {x}");
 }
