@@ -28,14 +28,30 @@ enum IntoColorError {
 impl TryFrom<(i16, i16, i16)> for Color {
     type Error = IntoColorError;
 
-    fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {}
+    fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
+        let is_valid = |c| (0..=255).contains(c);
+        let (red, green, blue) = tuple;
+        if is_valid(&red) && is_valid(&green) && is_valid(&blue) {
+            let (red, green, blue) = (
+                red.try_into().unwrap(),
+                green.try_into().unwrap(),
+                blue.try_into().unwrap(),
+            );
+            Ok(Color { red, green, blue })
+        } else {
+            Err(IntoColorError::IntConversion)
+        }
+    }
 }
 
 // TODO: Array implementation.
 impl TryFrom<[i16; 3]> for Color {
     type Error = IntoColorError;
 
-    fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {}
+    fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
+        let tuple = (arr[0], arr[1], arr[2]);
+        Self::try_from(tuple)
+    }
 }
 
 // TODO: Slice implementation.
@@ -43,7 +59,17 @@ impl TryFrom<[i16; 3]> for Color {
 impl TryFrom<&[i16]> for Color {
     type Error = IntoColorError;
 
-    fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {}
+    fn try_from(slice: &[i16]) -> Result<Self, Self::Error> {
+        if let Some((arr, rest)) = slice.split_first_chunk() {
+            if rest.is_empty() {
+                Self::try_from(*arr)
+            } else {
+                Err(IntoColorError::BadLen)
+            }
+        } else {
+            Err(IntoColorError::BadLen)
+        }
+    }
 }
 
 fn main() {
