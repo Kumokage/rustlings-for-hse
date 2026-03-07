@@ -155,8 +155,10 @@ fn main() -> Result<ExitCode> {
                 if let Ok(is_done) = app_state.is_done_all_exercises_impl()
                     && is_done
                 {
+                    println!("SUCCESS");
                     return Ok(ExitCode::SUCCESS);
                 } else {
+                    println!("FAILURE");
                     return Ok(ExitCode::FAILURE);
                 }
             }
