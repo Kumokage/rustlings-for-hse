@@ -1,9 +1,18 @@
+use std::f32::consts::E;
+
 // This function returns how much icecream there is left in the fridge.
 // If it's before 22:00 (24-hour system), then 5 scoops are left. At 22:00,
 // someone eats it all, so no icecream is left (value 0). Return `None` if
 // `hour_of_day` is higher than 23.
 fn maybe_icecream(hour_of_day: u16) -> Option<u16> {
     // TODO: Complete the function body.
+    if hour_of_day > 23 {
+        None
+    } else if hour_of_day >= 22 {
+        Some(0)
+    } else {
+        Some(5)
+    }
 }
 
 fn main() {
@@ -18,7 +27,7 @@ mod tests {
     fn raw_value() {
         // TODO: Fix this test. How do you get the value contained in the
         // Option?
-        let icecreams = maybe_icecream(12);
+        let icecreams = maybe_icecream(12).unwrap();
 
         assert_eq!(icecreams, 5); // Don't change this line.
     }
