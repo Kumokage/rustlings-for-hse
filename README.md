@@ -15,3 +15,5 @@ Feel free to use it for your own courses.
 
 For using locally install rustlings with `cargo install rustlings`
 command and run in `rustlings-for-hse` directory `rustlings` command.
+
+_Выполнил: Ястребов Игорь БПИ227_
