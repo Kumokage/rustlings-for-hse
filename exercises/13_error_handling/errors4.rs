@@ -10,6 +10,12 @@ struct PositiveNonzeroInteger(u64);
 impl PositiveNonzeroInteger {
     fn new(value: i64) -> Result<Self, CreationError> {
         // TODO: This function shouldn't always return an `Ok`.
+        if value == 0 {
+            return Result::Err(CreationError::Zero);
+        } else if value < 0 {
+            return Result::Err(CreationError::Negative);
+        }
+        
         Ok(Self(value as u64))
     }
 }

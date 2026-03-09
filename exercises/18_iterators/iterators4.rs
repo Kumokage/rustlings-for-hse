@@ -1,3 +1,22 @@
+struct Factorial {
+    curr: u64,
+    max: u64,
+}
+
+impl Iterator for Factorial {
+    type Item = u64;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.curr > self.max {
+            None
+        } else {
+            let value = self.curr;
+            self.curr += 1;
+            Some(value)
+        }
+    }
+}
+
 fn factorial(num: u64) -> u64 {
     // TODO: Complete this function to return the factorial of `num` which is
     // defined as `1 * 2 * 3 * … * num`.
@@ -10,10 +29,17 @@ fn factorial(num: u64) -> u64 {
     // - additional variables
     // For an extra challenge, don't use:
     // - recursion
+
+    Factorial { curr: 1, max: num }.product()
 }
 
 fn main() {
     // You can optionally experiment here.
+    let mut i = 0;
+    while i < 10  {
+        println!("{}! = {}", i, factorial(i));
+        i += 1;
+    }
 }
 
 #[cfg(test)]

@@ -25,7 +25,9 @@ impl ParsePosNonzeroError {
     }
 
     // TODO: Add another error conversion function here.
-    // fn from_parse_int(???) -> Self { ??? }
+    fn from_parse_int(err: ParseIntError) -> Self { 
+        Self::ParseInt(err)
+    }
 }
 
 #[derive(PartialEq, Debug)]
@@ -43,8 +45,12 @@ impl PositiveNonzeroInteger {
     fn parse(s: &str) -> Result<Self, ParsePosNonzeroError> {
         // TODO: change this to return an appropriate error instead of panicking
         // when `parse()` returns an error.
-        let x: i64 = s.parse().unwrap();
-        Self::new(x).map_err(ParsePosNonzeroError::from_creation)
+        let p: Result<i64, ParseIntError> = s.parse();
+        match p {
+            Err(p) => return Err(p).map_err(ParsePosNonzeroError::from_parse_int),
+            Ok(p) => return Self::new(p).map_err(ParsePosNonzeroError::from_creation),
+        }
+        // couldn't find a simpler solution...
     }
 }
 
