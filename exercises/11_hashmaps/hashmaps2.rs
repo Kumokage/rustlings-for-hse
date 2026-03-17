@@ -8,6 +8,7 @@
 // to insert any more of the fruits that are already in the basket (Apple,
 // Mango, and Lychee).
 
+use std::cmp::max;
 use std::collections::HashMap;
 
 #[derive(Hash, PartialEq, Eq, Debug)]
@@ -28,7 +29,11 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         Fruit::Pineapple,
     ];
 
+    let m = fruit_kinds.len() as i64;
+    let mut cnt = max((11 + m - 1) / m + 1 - m, u32::MIN as i64) as u32;
     for fruit in fruit_kinds {
+        basket.entry(fruit).or_insert(cnt);
+        cnt += 1;
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
