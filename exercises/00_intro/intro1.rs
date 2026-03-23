@@ -7,6 +7,7 @@
 
 fn main() {
     println!(r#"       Welcome to...                      "#);
+    println!(r#"       Welcome to...                      "#);
     println!(r#"                 _   _ _                  "#);
     println!(r#"  _ __ _   _ ___| |_| (_)_ __   __ _ ___  "#);
     println!(r#" | '__| | | / __| __| | | '_ \ / _` / __| "#);
