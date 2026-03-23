@@ -38,8 +38,7 @@ mod tests {
         let vec = vec![0, 1, 2];
         let mut input = Cow::from(&vec);
         abs_all(&mut input);
-        // TODO: Replace `todo!()` with `Cow::Owned(_)` or `Cow::Borrowed(_)`.
-        assert!(matches!(input, todo!()));
+        assert!(matches!(input, Cow::Borrowed(_)));
     }
 
     #[test]
@@ -51,19 +50,16 @@ mod tests {
         let vec = vec![0, 1, 2];
         let mut input = Cow::from(vec);
         abs_all(&mut input);
-        // TODO: Replace `todo!()` with `Cow::Owned(_)` or `Cow::Borrowed(_)`.
-        assert!(matches!(input, todo!()));
+        assert!(matches!(input, Cow::Owned(_)));
     }
 
     #[test]
     fn owned_mutation() {
-        // Of course this is also the case if a mutation does occur (not all
-        // numbers are absolute). In this case, the call to `to_mut()` in the
-        // `abs_all` function returns a reference to the same data as before.
         let vec = vec![-1, 0, 1];
         let mut input = Cow::from(vec);
+        let addr_before = input.as_ptr() as usize;
         abs_all(&mut input);
-        // TODO: Replace `todo!()` with `Cow::Owned(_)` or `Cow::Borrowed(_)`.
-        assert!(matches!(input, todo!()));
+        assert!(matches!(input, Cow::Owned(_)));
+        assert_eq!(addr_before, input.as_ptr() as usize);
     }
 }
