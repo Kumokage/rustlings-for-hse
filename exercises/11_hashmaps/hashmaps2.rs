@@ -8,6 +8,7 @@
 // to insert any more of the fruits that are already in the basket (Apple,
 // Mango, and Lychee).
 
+use std::collections::hash_map::Entry;
 use std::collections::HashMap;
 
 #[derive(Hash, PartialEq, Eq, Debug)]
@@ -32,6 +33,13 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
+        let entry = basket.entry(fruit);
+        match entry {
+            Entry::Occupied(_) => {}
+            Entry::Vacant(x) => {
+                x.insert(3);
+            }
+        }
     }
 }
 
