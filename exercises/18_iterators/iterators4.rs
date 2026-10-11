@@ -9,7 +9,9 @@ fn factorial(num: u64) -> u64 {
     // - imperative style loops (for/while)
     // - additional variables
     // For an extra challenge, don't use:
-    // - recursion
+    // - recursion 
+
+    (1..=num).product() 
 }
 
 fn main() {
