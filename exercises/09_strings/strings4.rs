@@ -21,7 +21,7 @@ fn main() {
 
     string("rust is fun!".to_owned());
 
-    string_slice("nice weather".into());
+    string_slice("nice weather");
 
     string(format!("Interpolation {}", "Station"));
 
